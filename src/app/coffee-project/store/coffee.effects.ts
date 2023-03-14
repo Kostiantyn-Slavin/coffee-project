@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
-import {of} from 'rxjs';
+import {iif, of, switchMap, withLatestFrom} from 'rxjs';
 import {catchError, map, mergeMap} from 'rxjs/operators';
 import {
   getCoffeeById,
@@ -12,20 +12,32 @@ import {
 } from './coffee.actions';
 import {CoffeeService} from '../services/coffee.service';
 import {CoffeeItem} from '../definitions/interface/coffee-item.interface';
+import {selectCoffeeList} from './coffee.selectors';
+import {Store} from '@ngrx/store';
+import {CoffeeState} from './coffee.state';
 
 @Injectable()
 export class CoffeeEffects {
-  constructor(private actions$: Actions, private coffeeService: CoffeeService) {}
+  constructor(
+    private actions$: Actions,
+    private coffeeService: CoffeeService,
+    private store: Store<CoffeeState>
+  ) {}
 
   getAllCoffee$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getCoffeeList),
-      mergeMap(() =>
-        this.coffeeService.getAllCoffee().pipe(
-          map((coffeeList: CoffeeItem[]) => getCoffeeListSuccess({coffeeList})),
-          catchError(() => of(getCoffeeListError))
-        )
-      )
+      withLatestFrom(this.store.select(selectCoffeeList)),
+      switchMap(([, coffeeList]) => {
+        return iif(
+          () => Boolean(coffeeList?.length),
+          of(getCoffeeListSuccess({coffeeList})),
+          this.coffeeService.getAllCoffee().pipe(
+            map((coffeeList: CoffeeItem[]) => getCoffeeListSuccess({coffeeList})),
+            catchError(() => of(getCoffeeListError))
+          )
+        );
+      })
     )
   );
 
