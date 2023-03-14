@@ -1,0 +1,33 @@
+<div class="container">
+  <app-loader
+    *ngIf="loaderStatus$ | async; else coffeeList"
+    data-id="cf-loader"
+  ></app-loader>
+  <ng-template #coffeeList>
+    <h1 class="sticky-top bg-white p-3">Product List Page</h1>
+    <div class="row"
+         data-id="cf-content">
+      <div class="col-md-12 col-lg-8">
+        <ng-container
+          *ngFor="let coffee of slicedCoffeeList$ | async; trackBy: trackById"
+        >
+          <app-coffee-item
+            [coffeeItem]="coffee"
+          ></app-coffee-item>
+        </ng-container>
+      </div>
+    </div>
+    <div class="sticky-footer sticky-bottom bg-gradient text-white"
+         data-id="cf-footer">
+      <div class="container">
+        <div class="row">
+          <app-pagination
+            [coffeeList]="coffeeList$ | async"
+          ></app-pagination>
+          <p>{{devName}}</p>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+

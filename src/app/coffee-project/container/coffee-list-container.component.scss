@@ -1,0 +1,33 @@
+$text-color: #555;
+$bg-color: #fff;
+
+$font-family: 'Open Sans', sans-serif;
+$font-size-lg: 1.5rem;
+
+.container {
+  font-family: $font-family;
+  color: $text-color;
+  background-color: $bg-color;
+
+  h1 {
+    font-size: $font-size-lg;
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  .row {
+    .col-md-12, .col-lg-8 {
+      margin: 0 auto;
+    }
+  }
+}
+
+.sticky-footer {
+  p {
+    margin: 0;
+    padding: 0 0 0.2rem;
+    font-size: 0.8rem;
+    color: $text-color;
+  }
+}
+

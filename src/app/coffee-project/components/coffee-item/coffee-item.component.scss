@@ -1,0 +1,50 @@
+.coffee-card {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  &:hover {
+    opacity: .85;
+  }
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #007bff;
+  }
+
+  &__origin, &__variety, &__notes, &__intensifier {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #6c757d;
+  }
+
+  &__origin {
+    font-weight: 500;
+    color: #212529;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
+  }
+
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  .product-button {
+    cursor: pointer;
+  }
+}

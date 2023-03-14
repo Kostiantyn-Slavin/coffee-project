@@ -1,0 +1,32 @@
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  plugins: ['eslint-plugin-prettier', 'eslint-plugin-import', '@typescript-eslint', 'unused-imports', '@angular-eslint'],
+  ignorePatterns: ['**/*.spec.ts'],
+  rules: {
+    quotes: ['error', 'single', {allowTemplateLiterals: true}],
+    'import/order': 'off',
+    'unused-imports/no-unused-imports': 'error',
+    'no-debugger': 'error',
+    'prefer-template': 'error',
+    'no-multiple-empty-lines': ['error', {max: 1, maxEOF: 1, maxBOF: 0}],
+    'no-console': 'error',
+    'linebreak-style': 0,
+    '@typescript-eslint/space-infix-ops': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'warn',
+    '@typescript-eslint/object-curly-spacing': ['off', 'never'],
+    'import/prefer-default-export': 'off',
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: 'CallExpression[callee.object.name="console"][callee.property.name=/^(info|log|warn|error)$/]',
+        message: 'Unexpected property on console was called',
+      },
+    ],
+    'prefer-const': 'error',
+    'max-lines-per-function': ['error', {max: 25, skipComments: true, skipBlankLines: true}],
+    complexity: ['error', 4],
+    '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/no-unused-expressions': 'error',
+    'no-nested-ternary': 'error',
+  },
+};

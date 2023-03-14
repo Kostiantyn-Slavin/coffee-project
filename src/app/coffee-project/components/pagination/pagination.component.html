@@ -1,0 +1,13 @@
+<div class="pagination">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [ngClass]="{disabled: (currentPage$ | async)! === 0}">
+      <span class="page-link" (click)="prevPage()">Previous</span>
+    </li>
+    <li class="page-item" *ngFor="let pageNum of pageNumbers" [ngClass]="{active: (currentPage$ | async)! === pageNum}">
+      <span class="page-link" (click)="goToPage(pageNum)">{{ pageNum + 1 }}</span>
+    </li>
+    <li class="page-item" [ngClass]="{disabled: (currentPage$ | async)! + 1 === maxIndex}">
+      <span class="page-link" (click)="nextPage()">Next</span>
+    </li>
+  </ul>
+</div>

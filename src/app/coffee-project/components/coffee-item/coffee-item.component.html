@@ -1,0 +1,15 @@
+<div class="coffee-card">
+  <h2 class="coffee-card__title">{{ coffeeItem?.blend_name }}</h2>
+  <div class="row">
+    <div class="col-sm-10 col-md-9">
+      <p class="coffee-card__origin">Origin: {{ coffeeItem?.origin }}</p>
+      <p class="coffee-card__variety">Variety: {{ coffeeItem?.variety }}</p>
+    </div>
+    <div class="col-sm-4 col-md-3 d-flex justify-content-end align-items-end">
+      <button
+        class="btn btn-secondary btn-sm product-button"
+        (click)="goToSelectedCoffee(coffeeItem!)"
+      >View details</button>
+    </div>
+  </div>
+</div>
