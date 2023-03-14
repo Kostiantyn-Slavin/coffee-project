@@ -1,6 +1,9 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {CoffeeItem} from '../../definitions/interface/coffee-item.interface';
+import {filter, Observable} from 'rxjs';
+import {getSelectedCoffee} from '../../store/coffee.selectors';
+import {select, Store} from '@ngrx/store';
+import {CoffeeState} from '../../store/coffee.state';
 
 @Component({
   selector: 'app-coffee-details',
@@ -8,12 +11,11 @@ import {CoffeeItem} from '../../definitions/interface/coffee-item.interface';
   styleUrls: ['./coffee-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CoffeeDetailsComponent implements OnInit {
-  public coffeeDetails: CoffeeItem = {} as CoffeeItem;
+export class CoffeeDetailsComponent {
+  public coffeeDetails$: Observable<CoffeeItem> = this.store.pipe(
+    select(getSelectedCoffee),
+    filter(Boolean)
+  );
 
-  constructor(private route: ActivatedRoute) {}
-
-  public ngOnInit(): void {
-    this.coffeeDetails = this.route.snapshot?.data['selectedCoffee'];
-  }
+  constructor(private store: Store<CoffeeState>) {}
 }

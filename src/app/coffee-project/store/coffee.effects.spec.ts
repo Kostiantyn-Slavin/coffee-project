@@ -9,12 +9,7 @@ import {initialState as CoffeeInitialState} from './coffee.reducer';
 import {provideMockStore} from '@ngrx/store/testing';
 import {provideMockActions} from '@ngrx/effects/testing';
 import {coffeeListMock} from '../container/coffee-list-container.component.spec';
-import {
-  getCoffeeById,
-  getCoffeeByIdSuccess,
-  getCoffeeList,
-  getCoffeeListSuccess,
-} from './coffee.actions';
+import {getCoffeeList, getCoffeeListSuccess} from './coffee.actions';
 import {cold, hot} from 'jasmine-marbles';
 
 const initialState: AppState = {
@@ -23,7 +18,6 @@ const initialState: AppState = {
 
 const coffeeServiceStub: Partial<CoffeeService> = {
   getAllCoffee: jest.fn(),
-  getCoffeeById: jest.fn(),
 };
 
 describe('AnalyticEffects', () => {
@@ -64,19 +58,6 @@ describe('AnalyticEffects', () => {
       actions$ = hot('-a', {a: action});
 
       expect(effects.getAllCoffee$).toBeObservable(expected);
-    });
-  });
-
-  describe('getCoffeeById$', () => {
-    it('should return a getCoffeeByIdSuccess', () => {
-      jest.spyOn(coffeeService, 'getCoffeeById').mockReturnValue(of(coffeeListMock[0]));
-
-      const action = getCoffeeById({selectedId: 1});
-      const completion = getCoffeeByIdSuccess({selectedCoffee: coffeeListMock[0]});
-      const expected = cold('-b', {b: completion});
-      actions$ = hot('-a', {a: action});
-
-      expect(effects.getCoffeeById$).toBeObservable(expected);
     });
   });
 });

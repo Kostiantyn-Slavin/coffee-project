@@ -8,15 +8,11 @@ import {CoffeeItem} from '../definitions/interface/coffee-item.interface';
 })
 export class CoffeeService {
   private readonly apiUrl = 'https://random-data-api.com/api/coffee/random_coffee';
+  private readonly itemsSize = 50;
 
   constructor(private http: HttpClient) {}
 
   public getAllCoffee(): Observable<CoffeeItem[]> {
-    return this.http.get<CoffeeItem[]>(`${this.apiUrl}?size=50`);
-  }
-
-  public getCoffeeById(id: number): Observable<CoffeeItem> {
-    const url = `${this.apiUrl}?id=${id}`;
-    return this.http.get<CoffeeItem>(url);
+    return this.http.get<CoffeeItem[]>(`${this.apiUrl}?size=${this.itemsSize}`);
   }
 }

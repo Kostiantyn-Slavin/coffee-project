@@ -6,9 +6,7 @@ import {
   increaseCurrentPage,
   getCoffeeListSuccess,
   setCurrentPage,
-  getCoffeeByIdSuccess,
-  getCoffeeById,
-  getCoffeeByIdError,
+  setSelectedCoffee,
 } from './coffee.actions';
 import {CoffeeState} from './coffee.state';
 import {TypedAction} from '@ngrx/store/src/models';
@@ -46,28 +44,13 @@ const setCoffeeListErrorReducer = (state: CoffeeState): CoffeeState => {
   };
 };
 
-const getCoffeeByIdReducer = (state: CoffeeState): CoffeeState => {
-  return {
-    ...state,
-    loader: true,
-  };
-};
-
-const getCoffeeByIdSuccessReducer = (
+const setSelectedCoffeeReducer = (
   state: CoffeeState,
   {selectedCoffee}: TypedAction<string> & {selectedCoffee: CoffeeItem}
 ): CoffeeState => {
   return {
     ...state,
     selectedCoffee,
-    loader: false,
-  };
-};
-
-const getCoffeeByIdErrorReducer = (state: CoffeeState): CoffeeState => {
-  return {
-    ...state,
-    loader: false,
   };
 };
 
@@ -105,9 +88,7 @@ export const coffeeReducer = createReducer(
   on(getCoffeeList, getCoffeeListReducer),
   on(getCoffeeListSuccess, getCoffeeListSuccessReducer),
   on(getCoffeeListError, setCoffeeListErrorReducer),
-  on(getCoffeeById, getCoffeeByIdReducer),
-  on(getCoffeeByIdSuccess, getCoffeeByIdSuccessReducer),
-  on(getCoffeeByIdError, getCoffeeByIdErrorReducer),
+  on(setSelectedCoffee, setSelectedCoffeeReducer),
   on(setCurrentPage, setCurrentPageReducer),
   on(decreaseCurrentPage, decreaseCurrentPageReducer),
   on(increaseCurrentPage, increaseCurrentPageReducer)

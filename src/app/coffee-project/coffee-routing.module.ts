@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {CoffeeListContainerComponent} from './container/coffee-list-container.component';
 import {CoffeeDetailsComponent} from './components/coffee-details/coffee-details.component';
-import {CoffeeDetailsResolver} from './services/coffee-details.resolver';
 
 const routes: Routes = [
   {
@@ -17,9 +16,6 @@ const routes: Routes = [
   {
     path: 'coffee/:id',
     component: CoffeeDetailsComponent,
-    resolve: {
-      selectedCoffee: CoffeeDetailsResolver,
-    },
   },
 ];
 
