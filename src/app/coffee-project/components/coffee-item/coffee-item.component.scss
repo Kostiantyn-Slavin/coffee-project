@@ -1,6 +1,8 @@
+@import '../../../styles/variables';
+
 .coffee-card {
-  background-color: #fff;
-  border: 1px solid #dee2e6;
+  background-color: $cf-white;
+  border: 1px solid $cf-light-1;
   border-radius: 0.25rem;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -14,7 +16,7 @@
     margin-bottom: 0.5rem;
     font-size: 1.25rem;
     font-weight: 500;
-    color: #007bff;
+    color: $cf-primary;
   }
 
   &__origin, &__variety, &__notes, &__intensifier {
@@ -22,12 +24,12 @@
     margin-bottom: 0.25rem;
     font-size: 1rem;
     font-weight: 400;
-    color: #6c757d;
+    color: $cf-secondary;
   }
 
   &__origin {
     font-weight: 500;
-    color: #212529;
+    color: $cf-dark;
   }
 
   .row {

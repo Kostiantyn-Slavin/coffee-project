@@ -1,6 +1,8 @@
+@import '../../../styles/variables';
+
 .product-details-container {
   padding: 0 30px 30px;
-  background-color: #f9f9f9;
+  background-color: $cf-light-3;
 
   .product-image {
     margin-bottom: 30px;
