@@ -13,5 +13,6 @@ export default {
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
   coverageReporters: ['json', 'html'],
   resetMocks: true,
+  setupFilesAfterEnv: ['<rootDir>/src/setup-jest.ts'],
   coverageProvider: 'v8',
 };
