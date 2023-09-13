@@ -6,6 +6,9 @@ export enum CoffeeActionTypes {
   GetListSuccess = '[Coffee List] Get List Success',
   GetListError = '[Coffee List] Get List Error',
 
+  GetSingleCoffee = '[Coffee List] Get Single Coffee',
+  SetSingleCoffee = '[Coffee List] Set Single Coffee',
+
   SetSelectedCoffee = '[Coffee List] Set selected coffee',
 
   SetCurrentPage = '[Pagination] Set Current Page',
@@ -30,6 +33,13 @@ export const setSelectedCoffee = createAction(
 export const setCurrentPage = createAction(
   CoffeeActionTypes.SetCurrentPage,
   props<{page: number}>()
+);
+
+export const getSingleCoffee = createAction(CoffeeActionTypes.GetSingleCoffee);
+
+export const setSingleCoffee = createAction(
+  CoffeeActionTypes.SetSingleCoffee,
+  props<{selectedCoffee: CoffeeItem}>()
 );
 
 export const decreaseCurrentPage = createAction(CoffeeActionTypes.PreviousPage);

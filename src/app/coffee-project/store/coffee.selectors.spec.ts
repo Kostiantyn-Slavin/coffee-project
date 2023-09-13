@@ -1,6 +1,6 @@
 import {getSelectedCoffee, selectCoffeeList} from './coffee.selectors';
 
-const coffeeDataMock = [
+export const coffeeDataMock = [
   {
     id: 9809,
     uid: 'e2bb804d-2f9c-4d4c-ac04-23d516c30e69',
