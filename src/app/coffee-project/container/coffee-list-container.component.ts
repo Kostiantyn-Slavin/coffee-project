@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 
 import {filter} from 'rxjs';
-import {getCoffeeList} from '../store/coffee.actions';
+import {getCoffeeList, getSingleCoffee} from '../store/coffee.actions';
 import {getLoaderStatus, getSlicedCoffeeList, selectCoffeeList} from '../store/coffee.selectors';
 import {CoffeeItem} from '../definitions/interface/coffee-item.interface';
 import {AppState} from '../../store';
@@ -26,6 +26,7 @@ export class CoffeeListContainerComponent implements OnInit {
 
   public ngOnInit(): void {
     this.store.dispatch(getCoffeeList());
+    this.store.dispatch(getSingleCoffee());
   }
 
   public trackById(index: number, item: CoffeeItem): number {
